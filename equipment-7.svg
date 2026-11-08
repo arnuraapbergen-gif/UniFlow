@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of CNC Machine">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#dfb374" stop-opacity=".32"/><stop offset="1" stop-color="#dfb374" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><rect x="106" y="129" width="358" height="238" rx="18" fill="#3d5967"/><rect x="132" y="156" width="306" height="155" rx="12" fill="#bad3d8"/>
+<path d="M172 174h222" stroke="#607d87" stroke-width="8"/><rect x="258" y="179" width="47" height="80" rx="7" fill="#425967"/>
+<path d="M283 257l-7 35" stroke="#243944" stroke-width="15"/><path d="M155 311l40-50h171l39 50" fill="#6e8990"/>
+<path d="M204 268h133l28 38H171z" fill="#dfb374"/><path d="M141 340h280" stroke="#1d3543" stroke-width="10"/><rect x="380" y="172" width="35" height="47" rx="7" fill="#2f5860"/><circle cx="397" cy="194" r="9" fill="#dfb374"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">CNC</text>
+ </svg>

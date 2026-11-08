@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<section class="auth-layout"><div class="auth-intro"><p class="eyebrow">WELCOME BACK</p><h1>Your lab work,<br><span>in one place.</span></h1><p>Sign in to request equipment and keep track of your reservations.</p><div class="auth-points"><span>✓ University account</span><span>✓ Booking history</span><span>✓ Role-based access</span></div></div>
+<div class="auth-card"><p class="eyebrow">UNIFLOW ACCOUNT</p><h2>Log in</h2><p class="muted">Enter your university email and password.</p>
+<form method="post" class="stack-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>University email<input type="email" name="email" placeholder="name@university.kz" autocomplete="username" required></label><label>Password<input type="password" name="password" placeholder="Your password" autocomplete="current-password" required></label><button class="button button-full" type="submit">Log in <span aria-hidden="true">→</span></button></form>
+<p class="auth-switch">New to UniFlow? <a href="{{ url_for('register') }}">Create a student account</a></p><p class="helper-note">Seeded database accounts use sample placeholder passwords. Use a newly registered account or configure an admin using <code>setup_admin.py</code>.</p></div></section>
+{% endblock %}

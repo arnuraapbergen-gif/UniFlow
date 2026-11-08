@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="push-key" content="{{ push_vapid_public_key }}">
+  <meta name="theme-color" content="#165b46">
+  <title>{% block title %}UniFlow{% endblock %} · University Lab Booking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='final-fix-3') }}">
+  <script src="{{ url_for('static', filename='site.js', v='final-fix-3') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('index') }}" aria-label="UniFlow home">
+  <img
+    class="brand-logo"
+    src="{{ url_for('static', filename='images/uniflow-logo.svg') }}"
+    alt=""
+    width="43"
+    height="43"
+  >
+  <span><strong>UniFlow</strong><small>University Lab Booking</small></span>
+</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="{{ url_for('index') }}">Equipment</a>
+      {% if current_user %}
+        <a href="{{ url_for('my_reservations') }}">My bookings</a>
+        {% if current_user.role == 'admin' %}<a href="{{ url_for('admin_dashboard') }}">Admin</a>{% endif %}
+        <div class="notifications-wrap">
+          <button type="button" class="notifications-toggle" id="notifications-toggle" aria-expanded="false" aria-controls="notifications-panel" aria-label="Open notifications">
+            <span aria-hidden="true">🔔</span><span id="notification-count" class="notification-count" hidden>0</span>
+          </button>
+          <section class="notifications-panel" id="notifications-panel" hidden aria-label="Notifications">
+            <div class="notifications-panel-heading"><strong>Notifications</strong><span id="notifications-message">Your booking updates</span></div>
+            <div id="notifications-list" class="notifications-list" aria-live="polite"><p class="notification-empty">Loading…</p></div>
+            <div class="notifications-preferences">
+              <button type="button" id="enable-push" class="button button-quiet button-small">Enable push</button>
+              <button type="button" id="test-push" class="button button-quiet button-small" disabled>Test push</button>
+              <button type="button" id="toggle-sound" class="button button-quiet button-small" aria-pressed="false">Sound: Off</button>
+            </div>
+            <p id="notifications-hint" class="notifications-hint">Push requires browser permission. Sounds are optional.</p>
+          </section>
+        </div>
+        <details class="profile-menu">
+          <summary class="nav-user">{{ current_user.full_name }} <small>{{ current_user.role }}</small> <span aria-hidden="true">▾</span></summary>
+          <div class="profile-dropdown">
+            <span class="profile-caption">{{ current_user.email }}</span>
+            <form action="{{ url_for('logout') }}" method="post" class="nav-form">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <button class="button button-quiet button-small" type="submit">Log out</button>
+            </form>
+          </div>
+        </details>
+      {% else %}
+        <a href="{{ url_for('login') }}">Log in</a>
+        <a class="button button-small" href="{{ url_for('register') }}">Create account</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main class="page-shell">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}<section class="flash-stack" aria-live="polite">
+        {% for category, message in messages %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}
+      </section>{% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    <div><strong>UniFlow</strong><span>Local academic prototype · SQLite</span></div>
+    <span>Demo data only. Do not use real personal information.</span>
+  </footer>
+</body>
+</html>

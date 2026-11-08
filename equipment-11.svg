@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of Centrifuge">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#72d2d7" stop-opacity=".32"/><stop offset="1" stop-color="#72d2d7" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><ellipse cx="281" cy="159" rx="134" ry="54" fill="#92aeb7"/><path d="M147 166v153c0 63 268 63 268 0V166" fill="#dce8e7"/>
+<ellipse cx="281" cy="159" rx="134" ry="54" fill="#b9cfcb" stroke="#617a86" stroke-width="8"/><ellipse cx="281" cy="160" rx="82" ry="33" fill="#345864"/>
+<g stroke="#72d2d7" stroke-width="10" stroke-linecap="round"><path d="M282 158l53-21M282 158l28 22M282 158l-30 22M282 158l-52-18"/></g><circle cx="282" cy="158" r="12" fill="#ccdedd"/>
+<rect x="221" y="274" width="122" height="34" rx="8" fill="#536e78"/><rect x="238" y="281" width="48" height="18" rx="4" fill="#72d2d7"/><circle cx="319" cy="290" r="11" fill="#d5e1e0"/>
+<path d="M190 337h184" stroke="#64828b" stroke-width="6"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">D</text>
+ </svg>

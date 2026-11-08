@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Create account{% endblock %}
+{% block content %}
+<section class="auth-layout"><div class="auth-intro"><p class="eyebrow">START WITH UNIFLOW</p><h1>Make lab time<br><span>easier to plan.</span></h1><p>Create a student account to request equipment reservations and manage your booking history.</p><div class="auth-points"><span>✓ Search available items</span><span>✓ Submit booking requests</span><span>✓ Track request status</span></div></div>
+<div class="auth-card"><p class="eyebrow">STUDENT ACCOUNT</p><h2>Create account</h2><p class="muted">Use your university email address.</p>
+<form method="post" class="stack-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>Full name<input type="text" name="full_name" maxlength="100" autocomplete="name" placeholder="Your full name" required></label><label>University email<input type="email" name="email" maxlength="254" autocomplete="email" placeholder="name@university.kz" required></label><label>Password<input type="password" name="password" minlength="8" autocomplete="new-password" placeholder="At least 8 characters" required></label><label>Confirm password<input type="password" name="confirm_password" minlength="8" autocomplete="new-password" placeholder="Repeat password" required></label><button class="button button-full" type="submit">Create student account <span aria-hidden="true">→</span></button></form>
+<p class="auth-switch">Already registered? <a href="{{ url_for('login') }}">Log in</a></p><p class="helper-note">Public registration creates student accounts only. Administrator accounts are configured locally for the project demo.</p></div></section>
+{% endblock %}

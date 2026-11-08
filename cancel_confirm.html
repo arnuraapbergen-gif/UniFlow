@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Confirm cancellation{% endblock %}
+{% block content %}
+<section class="page-intro"><p class="eyebrow">CONFIRM ACTION</p><h1>Cancel booking #{{ reservation.reservation_id }}?</h1><p>This will change the booking status to Cancelled.</p></section>
+<section class="table-card confirm-card">
+  <h2>{{ reservation.equipment_name }}</h2>
+  <p>{{ reservation.reservation_date }} · {{ reservation.start_time }}–{{ reservation.end_time }}</p>
+  <p>Current status: <strong>{{ reservation.status|title }}</strong></p>
+  <div class="confirm-actions">
+    <a class="button button-quiet" href="{{ url_for('my_reservations') }}">Keep booking</a>
+    <form method="post" action="{{ url_for('cancel_reservation', reservation_id=reservation.reservation_id) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button class="button button-danger" type="submit">Yes, cancel booking</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

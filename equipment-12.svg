@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of Robotics Kit R1">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#a8d5a4" stop-opacity=".32"/><stop offset="1" stop-color="#a8d5a4" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><rect x="160" y="213" width="259" height="97" rx="22" fill="#405e6d"/><rect x="195" y="183" width="188" height="71" rx="20" fill="#a8d5a4"/>
+<rect x="222" y="196" width="134" height="41" rx="9" fill="#183e4e"/><g fill="#b7e7d5"><circle cx="251" cy="216" r="12"/><circle cx="327" cy="216" r="12"/></g>
+<g fill="#223c49"><circle cx="204" cy="312" r="38"/><circle cx="378" cy="312" r="38"/></g><g fill="#9bc1bc"><circle cx="204" cy="312" r="17"/><circle cx="378" cy="312" r="17"/></g>
+<path d="M288 181v-29m0-1l35-17" stroke="#345969" stroke-width="8" fill="none"/><circle cx="326" cy="133" r="12" fill="#a8d5a4"/>
+<path d="M158 258l-39-26m302 26l40-26" stroke="#6b8b97" stroke-width="11" stroke-linecap="round"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">R1</text>
+ </svg>

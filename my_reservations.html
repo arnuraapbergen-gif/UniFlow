@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}My bookings{% endblock %}
+{% block content %}
+<section class="page-intro"><p class="eyebrow">PERSONAL DASHBOARD</p><h1>My bookings</h1><p>See your submitted requests and their current status.</p></section>
+<section class="table-card">
+  <div class="table-card-head">
+    <div><h2>Reservation history</h2><p>Requests are pending until an administrator reviews them.</p></div>
+    <a class="button button-quiet button-small" href="{{ url_for('index') }}">+ New booking</a>
+  </div>
+  {% if reservations %}
+    <div class="table-scroll desktop-booking-table">
+      <table>
+        <thead><tr><th>Request</th><th>Equipment</th><th>Date</th><th>Time</th><th>Status</th><th>Admin note</th><th></th></tr></thead>
+        <tbody>
+          {% for r in reservations %}
+          <tr>
+            <td><strong>#{{ r.reservation_id }}</strong><small>{{ r.building }}</small></td>
+            <td>{{ r.equipment_name }}</td>
+            <td>{{ r.reservation_date }}</td>
+            <td>{{ r.start_time }}–{{ r.end_time }}</td>
+            <td><span class="status status-{{ r.status }}"><span class="status-dot"></span>{{ r.status }}</span></td>
+            <td>{{ r.admin_comment or '—' }}</td>
+            <td>
+              {% if r.status in ['pending', 'approved'] and (r.reservation_date ~ ' ' ~ r.start_time) > (today_iso ~ ' ' ~ now_time) %}
+                <a class="button button-danger button-small" href="{{ url_for('confirm_cancel_reservation', reservation_id=r.reservation_id) }}">Cancel booking</a>
+              {% elif r.status in ['pending', 'approved'] %}<span class="muted">Cancellation closed</span>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mobile-booking-list" aria-label="Reservation history">
+      {% for r in reservations %}
+      <article class="mobile-booking-card">
+        <div class="mobile-booking-card-top">
+          <strong class="mobile-booking-id">Request #{{ r.reservation_id }}</strong>
+          <span class="status status-{{ r.status }}"><span class="status-dot"></span>{{ r.status }}</span>
+        </div>
+        <h3 class="mobile-booking-equipment">{{ r.equipment_name }}</h3>
+        <p class="mobile-booking-building">{{ r.building }}</p>
+        <div class="mobile-booking-details">
+          <div><span>Date</span><strong>{{ r.reservation_date }}</strong></div>
+          <div><span>Time</span><strong>{{ r.start_time }}–{{ r.end_time }}</strong></div>
+        </div>
+        {% if r.admin_comment %}<p class="mobile-booking-note"><span>Admin note:</span> {{ r.admin_comment }}</p>{% endif %}
+        {% if r.status in ['pending', 'approved'] and (r.reservation_date ~ ' ' ~ r.start_time) > (today_iso ~ ' ' ~ now_time) %}
+          <a class="button button-danger button-small" href="{{ url_for('confirm_cancel_reservation', reservation_id=r.reservation_id) }}">Cancel booking</a>
+        {% elif r.status in ['pending', 'approved'] %}<p class="mobile-booking-closed muted">Cancellation closed</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state compact"><div class="empty-icon">▤</div><h3>No bookings yet</h3><p>Your reservation requests will appear here.</p><a class="button" href="{{ url_for('index') }}">Browse equipment</a></div>
+  {% endif %}
+</section>
+{% endblock %}

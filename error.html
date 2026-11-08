@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Error {{ code }}{% endblock %}
+{% block content %}<section class="empty-state error-state"><div class="empty-icon">!</div><p class="eyebrow">ERROR {{ code }}</p><h1>Something went wrong</h1><p>{{ message }}</p><a class="button" href="{{ url_for('index') }}">Back to UniFlow</a></section>{% endblock %}

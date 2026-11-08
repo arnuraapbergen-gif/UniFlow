@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Available time slots{% endblock %}
+{% block content %}
+<section class="page-intro slot-intro"><div><p class="eyebrow">BOOK AN EQUIPMENT SLOT</p><h1>{{ equipment.name }}</h1><p>{{ equipment.category }} · {{ equipment.building }}</p></div><img class="slot-preview" src="{{ url_for('static', filename='images/equipment/equipment-' ~ (equipment.equipment_id if equipment.equipment_id in range(1, 16) else 'generic') ~ '.svg') }}" alt="Illustration of {{ equipment.name }}" width="580" height="430"></section>
+<section class="table-card slots-page">
+  <div class="table-card-head"><div><h2>Available time slots</h2><p>Choose a date, then request an available one-hour slot. {{ booking_days_text }}, {{ booking_hours }} (Astana time).</p></div><a class="button button-quiet button-small" href="{{ url_for('index') }}#equipment-list">Back to equipment</a></div>
+  <form method="get" class="slot-date-form">
+    <label>Date <input type="date" name="date" min="{{ today_iso }}" value="{{ selected_date }}" required></label>
+    <button class="button" type="submit">Check times</button>
+  </form>
+  {% if selected_date_is_closed %}
+    <p class="slot-message">The laboratory is closed on this day. Choose a working day ({{ booking_days_text }}).</p>
+  {% elif equipment.status != 'available' %}
+    <p class="slot-message">This equipment is currently marked {{ equipment.status.replace('_', ' ') }} and cannot be booked.</p>
+  {% else %}
+    <p class="slot-help">Grey slots are already booked or in the past. A new request remains Pending until the administrator approves it.</p>
+    <div class="slots-grid">
+      {% for slot in slots %}
+        {% if slot.available %}
+          <form method="post" action="{{ url_for('reserve') }}" class="slot-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="equipment_id" value="{{ equipment.equipment_id }}">
+            <input type="hidden" name="reservation_date" value="{{ selected_date }}">
+            <input type="hidden" name="start_time" value="{{ slot.start }}">
+            <input type="hidden" name="end_time" value="{{ slot.end }}">
+            <button class="slot-button" type="submit" aria-label="Request {{ slot.start }} to {{ slot.end }} on {{ selected_date }}">{{ slot.start }}–{{ slot.end }} <span>Available · Book</span></button>
+          </form>
+        {% else %}
+          <div class="slot-button slot-unavailable" aria-label="{{ slot.start }} to {{ slot.end }} unavailable">{{ slot.start }}–{{ slot.end }} <span>Unavailable</span></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

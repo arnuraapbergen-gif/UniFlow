@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of Oscilloscope B1">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#6ce2a6" stop-opacity=".32"/><stop offset="1" stop-color="#6ce2a6" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><rect x="120" y="125" width="330" height="225" rx="23" fill="#263941"/><rect x="139" y="145" width="223" height="153" rx="10" fill="#10343c"/>
+<g opacity=".3" stroke="#77c9a1" stroke-width="1"><path d="M139 183h223M139 222h223M139 261h223M176 145v153M214 145v153M251 145v153M289 145v153M327 145v153"/></g>
+<path d="M147 232h37l17-23 30 46 24-57 19 23 26-35 25 24h31" fill="none" stroke="#6ce2a6" stroke-width="6" stroke-linejoin="round"/>
+<g fill="#b9ccd1"><circle cx="401" cy="170" r="16"/><circle cx="401" cy="215" r="16"/><circle cx="401" cy="260" r="16"/></g>
+<path d="M161 319h260" stroke="#758e93" stroke-width="3"/><path d="M220 354v21m124-21v21" stroke="#203f46" stroke-width="12"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">B1</text>
+ </svg>

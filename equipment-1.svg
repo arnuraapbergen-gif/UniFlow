@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of 3D Printer A1">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#5ad7ad" stop-opacity=".32"/><stop offset="1" stop-color="#5ad7ad" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><path d="M125 269 L158 111 H414 L446 270" stroke="#283c42" stroke-width="17" fill="none" stroke-linejoin="round"/>
+<path d="M164 113H410" stroke="#647b84" stroke-width="10"/><path d="M183 119V252M382 119V252" stroke="#8fbac0" stroke-width="6"/>
+<path d="M215 146H347" stroke="#263942" stroke-width="11" stroke-linecap="round"/><rect x="268" y="144" width="27" height="43" rx="5" fill="#607e89"/><path d="M282 186v14" stroke="#1f3440" stroke-width="6"/>
+<path d="M196 272h178l25 32H171z" fill="#435561"/><path d="M189 268h197" stroke="#162f3d" stroke-width="10"/>
+<path d="M246 257l18-35h58l17 35z" fill="#5ad7ad"/><path d="M263 218h60" stroke="#f7fcf9" stroke-width="5"/><rect x="215" y="310" width="143" height="16" rx="4" fill="#1d3948"/>
+<rect x="196" y="332" width="183" height="34" rx="9" fill="#263b4a"/><rect x="318" y="339" width="45" height="18" rx="4" fill="#5ad7ad"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">A1</text>
+ </svg>

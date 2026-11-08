@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 430" role="img" aria-label="Illustration of Soldering Station">
+ <defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff7f5"/><stop offset="1" stop-color="#deecf2"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#a4cc81" stop-opacity=".32"/><stop offset="1" stop-color="#a4cc81" stop-opacity="0"/></radialGradient>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#243d4b" flood-opacity=".20"/></filter>
+ </defs>
+ <rect width="580" height="430" fill="url(#bg)"/><circle cx="454" cy="70" r="180" fill="url(#glow)"/>
+ <path d="M0 345h580" stroke="#c9dbd8" stroke-width="3" opacity=".9"/><ellipse cx="290" cy="368" rx="204" ry="25" fill="#84b2ab" opacity=".14"/>
+ <g filter="url(#shadow)"><rect x="150" y="177" width="253" height="173" rx="22" fill="#314856"/><rect x="173" y="195" width="135" height="73" rx="9" fill="#192e3b"/>
+<text x="237" y="241" text-anchor="middle" font-size="37" font-family="monospace" fill="#a4cc81">350°</text><circle cx="358" cy="235" r="30" fill="#cad7dc"/><circle cx="358" cy="235" r="14" fill="#78929b"/>
+<path d="M184 296h184" stroke="#7b949a" stroke-width="6"/><path d="M385 350q82 40 107-5" stroke="#1c3640" stroke-width="7" fill="none"/>
+<path d="M445 178l-43 112" stroke="#414e54" stroke-width="19" stroke-linecap="round"/><path d="M451 160l-7 18" stroke="#bfcfd4" stroke-width="9"/><path d="M401 290l-12 31" stroke="#afc1c4" stroke-width="5"/></g>
+ <rect x="24" y="25" width="95" height="29" rx="14" fill="#fff" opacity=".88"/><text x="71" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="13" font-weight="700">UNIFLOW</text>
+ <rect x="457" y="25" width="96" height="29" rx="14" fill="#fff" opacity=".88"/><text x="505" y="45" text-anchor="middle" fill="#3d6267" font-family="Arial,sans-serif" font-size="12" font-weight="700">LAB B</text>
+ </svg>

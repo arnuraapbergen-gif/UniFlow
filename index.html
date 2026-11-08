@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Find equipment{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">CAMPUS LABS · ONE PLACE</p>
+    <h1>Find the right equipment.<br><span>Plan your next experiment.</span></h1>
+    <p class="hero-text">Browse laboratory equipment, check its current status and submit a reservation request in a few simple steps.</p>
+    <div class="hero-actions">
+      {% if current_user and current_user.role == 'student' %}<a class="button" href="#equipment-list">Browse equipment <span aria-hidden="true">↓</span></a>
+      {% elif not current_user %}<a class="button" href="{{ url_for('register') }}">Get started <span aria-hidden="true">→</span></a>
+      {% else %}<a class="button" href="{{ url_for('admin_dashboard') }}">Open admin dashboard <span aria-hidden="true">→</span></a>{% endif %}
+      <span class="hero-note">
+  <span class="dot dot-green dot-pulse" aria-hidden="true"></span>
+  Local prototype is running
+</span>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+    <div class="lab-card lab-card-main"><div class="lab-icon">⌘</div><span class="lab-tag">LAB EQUIPMENT</span><h3>Ready when<br>you are.</h3><div class="visual-line"></div><div class="visual-meta"><span>Available items</span><strong>{{ stats.available }}</strong></div></div>
+    <div class="floating-chip chip-top"><span class="chip-check">✓</span> Booking requests</div>
+    <div class="floating-chip chip-bottom"><span class="mini-dot"></span> Status updates</div>
+  </div>
+</section>
+<section class="media-showcase" aria-labelledby="media-showcase-title">
+  <img
+    src="{{ url_for('static', filename='images/lab-equipment.webp') }}"
+    alt="A 3D printer shown as an example of laboratory equipment"
+  >
+  <div class="media-showcase-copy">
+    <p class="eyebrow">LAB EQUIPMENT</p>
+    <h2 id="media-showcase-title">Explore laboratory equipment</h2>
+    <p>Browse equipment, check availability and request a reservation through UniFlow.</p>
+  </div>
+</section>
+<section class="stats-grid" aria-label="System overview">
+  <article class="stat-card"><span class="stat-label">Equipment catalog</span><strong>{{ stats.equipment }}</strong><span class="stat-caption">items in the database</span></article>
+  <article class="stat-card"><span class="stat-label">Currently available</span><strong>{{ stats.available }}</strong><span class="stat-caption">ready to request</span></article>
+  <article class="stat-card"><span class="stat-label">Reservations</span><strong>{{ stats.reservations }}</strong><span class="stat-caption">saved records</span></article>
+</section>
+
+<div class="booking-policy" role="note"><span aria-hidden="true">◷</span><div><strong>AITU lab booking schedule</strong><span>{{ booking_days_text }} · {{ booking_hours }} · Astana time (UTC+5). Only these time slots may be reserved; submit requests at any time.</span></div></div>
+<section class="section-heading" id="equipment-list">
+  <div><p class="eyebrow">EXPLORE THE CATALOG</p><h2>Equipment directory</h2><p class="section-subtitle">Search by name, category or building.</p></div>
+</section>
+<form method="get" action="{{ url_for('index') }}" class="filter-bar">
+  <label class="search-box"><span aria-hidden="true">⌕</span><input type="search" name="q" placeholder="Search equipment…" value="{{ q }}" aria-label="Search equipment"></label>
+  <select name="category" aria-label="Filter by category"><option value="">All categories</option>{% for item in categories %}<option value="{{ item.category }}" {% if selected_category == item.category %}selected{% endif %}>{{ item.category }}</option>{% endfor %}</select>
+  <select name="building" aria-label="Filter by building"><option value="">All buildings</option>{% for item in buildings %}<option value="{{ item.building }}" {% if selected_building == item.building %}selected{% endif %}>{{ item.building }}</option>{% endfor %}</select>
+  <select name="status" aria-label="Filter by availability"><option value="">All statuses</option><option value="available" {% if selected_status == 'available' %}selected{% endif %}>Available</option><option value="in_use" {% if selected_status == 'in_use' %}selected{% endif %}>In use</option><option value="maintenance" {% if selected_status == 'maintenance' %}selected{% endif %}>Maintenance</option></select>
+  <button class="button" type="submit">Search</button>
+  {% if q or selected_category or selected_building or selected_status %}<a class="button button-quiet" href="{{ url_for('index') }}">Reset</a>{% endif %}
+</form>
+
+{% if equipment %}
+<section class="equipment-grid">
+  {% for item in equipment %}
+  <article class="equipment-card">
+    <div class="equipment-card-top"><span class="category-pill">{{ item.category }}</span><span class="status status-{{ item.status }}"><span class="status-dot"></span>{{ item.status.replace('_', ' ') }}</span></div>
+    <div class="equipment-photo"><img src="{{ url_for('static', filename='images/equipment/equipment-' ~ (item.equipment_id if item.equipment_id in range(1, 16) else 'generic') ~ '.svg') }}" alt="Illustration of {{ item.name }}" width="580" height="430" loading="lazy"><span class="equipment-lab-tag">{{ item.building }}</span></div>
+    <div class="equipment-details"><p class="equipment-id">EQUIPMENT · {{ '%03d'|format(item.equipment_id) }}</p><h3>{{ item.name }}</h3><p class="equipment-location">{{ item.building }} <span>·</span> {{ item.category }}</p></div>
+    {% if item.status == 'available' and current_user and current_user.role == 'student' %}
+      <a class="button button-full" href="{{ url_for('equipment_slots', equipment_id=item.equipment_id) }}">Choose available time <span aria-hidden="true">→</span></a>
+    {% elif item.status == 'available' and not current_user %}
+      <a class="button button-full" href="{{ url_for('login') }}">Log in to book <span aria-hidden="true">→</span></a>
+    {% elif item.status == 'available' and current_user and current_user.role == 'admin' %}
+      <p class="card-note">Administrator view · booking is a student action</p>
+    {% else %}
+      <p class="unavailable-note">Not available for new bookings right now.</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+  <div class="empty-state"><div class="empty-icon">⌕</div><h3>No equipment found</h3><p>Try another search term or reset the filters.</p><a class="button button-quiet" href="{{ url_for('index') }}">Show all equipment</a></div>
+{% endif %}
+<div class="prototype-note"><strong>Prototype note</strong><span>New bookings are saved with <code>pending</code> status. An administrator must approve them before they are confirmed.</span></div>
+{% endblock %}
